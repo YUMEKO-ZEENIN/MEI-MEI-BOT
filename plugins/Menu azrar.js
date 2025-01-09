@@ -27,7 +27,37 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
   await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
   const zack = 'https://envs.sh/wHc.jpg'
   const mentionId = m.key.participant || m.key.remoteJid;
- 
+
+    const vCard = `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`;
+        const fkontak2 = {
+            'key': {
+                'participants': '0@s.whatsapp.net',
+                'remoteJid': 'status@broadcast',
+                'fromMe': false,
+                'id': 'Halo'
+            },
+            'message': {
+                'contactMessage': {
+                    'vcard': vCard
+                }
+            },
+            'participant': '0@s.whatsapp.net'
+        };
+
+        // إرسال الرسالة التي تحتوي على الصورة والاسم
+        let json = { img: 'https://qu.ax/XahGw.jpg' }; // يجب توفير رابط الصورة هنا
+        let message = await conn.sendFile(m.chat, json.img, '', caption, m, false, {
+            contextInfo: {
+                mentionedJid: [m.sender],
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: '120363282265739211@newsletter',
+                    newsletterName: '亗 MITSURI ϟ BOT 亗',
+                },
+                forwardingScore: 1
+            },
+            quoted: fkontak2
+        });
 conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { header: { title: `harley`}, body: { text: `╮⊰ـ᯽⊱═══┤⊰🍁⊱├═══⊰᯽ـ⊱╭
 *˼⚡˹↜ مـࢪحـبـا بـڪ︱ـي↶*
 *˼‏么˹ @${m.sender.split('@')[0]}*
