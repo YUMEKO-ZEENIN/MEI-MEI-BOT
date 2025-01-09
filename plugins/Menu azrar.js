@@ -63,7 +63,7 @@ conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { 
                                 buttonParamsJson: JSON.stringify({
                                     title: '⌈🛡╎الــقــوائـــم╎🛡⌋',
                                     sections: [
-#                                        {
+                                        {
                                             title: 'مــرحـ🛡ـبــا بــك فـي مــ☑هــام فلاش بـ🤖ـوت',
                                             highlight_label: 'بعبص براحتك في البوت يا برو 🤖',
                                             rows: [
