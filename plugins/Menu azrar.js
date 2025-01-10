@@ -28,39 +28,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
   const zack = 'https://envs.sh/wHc.jpg'
   const mentionId = m.key.participant || m.key.remoteJid;
 
-    const vCard = `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`;
-     let name = global.db.data.users[m.sender]?.name || m.sender.split('@')[0];
-
-    const vCard = `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`;
-        const fkontak2 = {
-            'key': {
-                'participants': '0@s.whatsapp.net',
-                'remoteJid': 'status@broadcast',
-                'fromMe': false,
-                'id': 'Halo'
-            },
-            'message': {
-                'contactMessage': {
-                    'vcard': vCard
-                }
-            },
-            'participant': '0@s.whatsapp.net'
-        };
-
-        let message = await conn.sendFile(m.chat, json.img, '', caption, m, false, {
-            contextInfo: {
-                mentionedJid: [m.sender],
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363282265739211@newsletter',
-                    newsletterName: '亗 MITSURI ϟ BOT 亗',
-                },
-                forwardingScore: 1
-            },
-            quoted: fkontak2
-        });
-    
-conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { header: { title: `harley`}, body: { text: `╮⊰ـ᯽⊱═══┤⊰🍁⊱├═══⊰᯽ـ⊱╭
+conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { header: { title: `harley`}, body: { text: `*╮⊰ـ᯽⊱═══┤⊰🍁⊱├═══⊰᯽ـ⊱╭*
 *˼⚡˹↜ مـࢪحـبـا بـڪ︱ـي↶*
 *˼‏么˹ @${m.sender.split('@')[0]}*
 *˼🪪˹ \`↜ مــعــلــومــاتــك ↶\`*
@@ -74,16 +42,16 @@ conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { 
 *˼🤖˹ \`↜معلومات الــبــوت↶\`*
 *╮─────────────⟢ـ*
 *┆⚙️↜ اسـم البوت ↶*
-*┆\`﹝ميتسوري﹞\`🌸*
+*┆ \`﹝ميتسوري﹞\`🌸*
 *┆🪄 ↜اسـم الـمـطـور ↶*
-*┆\`﹝تشون يوها﹞\`🎭*
+*┆ \`﹝تشون يوها﹞\`🎭*
 *┆📌 ↜الـتـشـغـيـل ↶*
 *┆﹝${uptime}﹞ـ*
 *┆🔖 ↜الــمــســتـخـدمـيـن ↶*
 *┆﹝${rtotalreg}﹞ـ*
 *╯─────────────⟢ـ*
 *\`ـCheon  么 Yoohaメ\`*
-╯⊰ـ᯽⊱═══┤⊰🍁⊱├═══⊰᯽ـ⊱╰`,subtitle: "Araab Zack",},header: { hasMediaAttachment: true,...(await prepareWAMessageMedia({ image : { url: zack } }, { upload: conn.waUploadToServer }, {quoted: m}))},
+*╯⊰ـ᯽⊱═══┤⊰🍁⊱├═══⊰᯽ـ⊱╰*`,subtitle: "Araab Zack",},header: { hasMediaAttachment: true,...(await prepareWAMessageMedia({ image : { url: zack } }, { upload: conn.waUploadToServer }, {quoted: m}))},
                     contextInfo: {
                         mentionedJid: [m.sender],
                         isForwarded: false,
