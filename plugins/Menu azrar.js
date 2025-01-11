@@ -1,30 +1,65 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+function clockString(ms) {
+    let h = Math.floor(ms / 3600000);
+    let m = Math.floor(ms % 3600000 / 60000);
+    let s = Math.floor(ms % 60000 / 1000);
+    return [h, m, s].map(v => v.toString().padStart(2, '0')).join(':');
+}
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-    const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
+import pkg from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto, prepareWAMessageMedia } = pkg;
 
-    // Send fake reply message with serial number
-    const sn = '*جـاًر تـجـهيز الـقـائـمـه🛰️...*'; // replace with the actual serial number
-    conn.fakeReply(m.chat, sn, '0@s.whatsapp.net', 'مرحبا بك👋🏻, في بوت السلطان', 'status@broadcast');
+const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
+    let d = new Date(new Date + 3600000);
+    let locale = 'ar';
+    let week = d.toLocaleDateString(locale, { weekday: 'long' });
+    let date = d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
+    let _uptime = process.uptime() * 1000;
+    let uptime = clockString(_uptime);
+    let user = global.db.data.users[m.sender];
+    let name = conn.getName(m.sender)
+    let { money, joincount } = global.db.data.users[m.sender];
+    let { exp, limit, level, role } = global.db.data.users[m.sender];
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length;
+    let more = String.fromCharCode(8206);
+    let readMore = more.repeat(850);
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
+  await conn.sendMessage(m.chat, { react: { text: '📂', key: m.key } })
+  const zack = 'https://qu.ax/GHdQp.jpg'
+  const mentionId = m.key.participant || m.key.remoteJid;
 
-    // Prepare the image
-    var joanimiimg = await prepareWAMessageMedia({ image: { url: 'https://telegra.ph/file/ec15edb7e6568daafc093.png' } }, { upload: conn.waUploadToServer });
+conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { header: { title: `harley`}, body: { text: `*╮⊰ـ᯽⊱═══┤⊰🍁⊱├═══⊰᯽ـ⊱╭*
+*˼⚡˹↜ مـࢪحـبـا بـڪ︱ـي↶*
+*˼‏么˹ @${m.sender.split('@')[0]}*
+*˼🪪˹ \`↜ مــعــلــومــاتــك ↶\`*
+*╮─────────────⟢ـ*
+*┆⚡↜ بـريـمـيـوم↞⌊ ${user.premiumTime > 0 ? 'مــمـ🔱ـيز' : (isPrems ? 'مــمـ🔱ـيز' : 'عــ🍁ــادي') || ''} ⌉*
+*┆⚜️↜ مـــســـتواك↞⌊ ${level} ⌉*
+*┆💫↜ رتـبـتـك↞⌊ ${role} ⌉*
+*┆🧰↜ الـخـبـرة↞⌊  ${exp} ⌉*
+*┆💎↜ الـمـاس↞⌊  ${limit} ⌉*
+*╯─────────────⟢ـ*
+*˼🤖˹ \`↜معلومات الــبــوت↶\`*
+*╮─────────────⟢ـ*
+*┆⚙️↜ اسـم البوت ↶*
+*┆ \`﹝ميتسوري﹞\`🌸*
+*┆🪄 ↜اسـم الـمـطـور ↶*
+*┆ \`﹝تشون يوها﹞\`🎭*
+*┆📌 ↜الـتـشـغـيـل ↶*
+*┆﹝${uptime}﹞ـ*
+*┆🔖 ↜الــمــســتـخـدمـيـن ↶*
+*┆﹝${rtotalreg}﹞ـ*
+*╯─────────────⟢ـ*
+*\`ـCheon  么 Yoohaメ\`*
+*╯⊰ـ᯽⊱═══┤⊰🍁⊱├═══⊰᯽ـ⊱╰*`,subtitle: "Araab Zack",},header: { hasMediaAttachment: true,...(await prepareWAMessageMedia({ image : { url: zack } }, { upload: conn.waUploadToServer }, {quoted: m}))},
+                    contextInfo: {
+                        mentionedJid: [m.sender],
+                        isForwarded: false,
+                    },nativeFlowMessage: { buttons: [
 
-    // Create the interactive message with the image
-    const interactiveMessage = {
-        header: {
-            title: `*╮───────────────╭*\n\n *│• اهلا ${m.pushName}*\n *│• اسم البوت: بوت السلطان*\n *│• اسم المطور: يـوسـف الـسلطان*\n *│• وَنَجّنَا بِرَحْمَتِكَ مِنَ القوم الكافرين*\n`,
-            hasMediaAttachment: true,
-            imageMessage: joanimiimg.imageMessage,
-        },
-        body: {
-            text: ' *`افتح القائمة بواسطه الزر`🔘*\n\n*╯───────────────╰*\n\n',
-        },
-        footer: { text: `تم صنع هذا البوت بواسطه يوسف السلطان يمنع سب البوت والبوت يعمل فقط في المجموعات وشكرا لك علي استخدام البوت \n\n\n© Bot by Youssef Al Soltan`.trim() },
-        nativeFlowMessage: {
-            buttons: [
-                {
-                    name: 'single_select',
+
+                            {
+                                name: 'single_select',
                     buttonParamsJson: JSON.stringify({
                         title: '💫 اخـتر القـسـم 💫',
                         sections: [
@@ -169,21 +204,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         }
     };
 
-    // Generate the message
-    let msg = generateWAMessageFromContent(m.chat, {
-        viewOnceMessage: {
-            message: {
-                interactiveMessage,
-            },
-        },
-    }, { userJid: conn.user.jid, quoted: m });
-
-    // Send the message
-    conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
-}
-
 handler.help = ['info'];
 handler.tags = ['main'];
-handler.command = ['أوامر', 'اوامر', 'الاوامر', 'ألاوامر', 'menu', 'Menu'];
+handler.command = ['menu', 'مهام', 'اوامر','الاوامر','قائمة','القائمة']
 
 export default handler;
+        
