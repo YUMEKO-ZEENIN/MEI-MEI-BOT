@@ -128,6 +128,21 @@ conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { 
                                                     title: 'استدعاء_قسم_ابحث #البحث',
                                                     description: '',
                                                     id: '.ق11'
+                                                    
+                            {
+                                name: 'single_select',
+                                buttonParamsJson: JSON.stringify({
+                                    title: '⌈🛡╎اوامر╎🛡⌋',
+                                    sections: [
+                                        {
+                                            title: 'مــرحـ🛡ـبــا بــك ',
+                                            highlight_label: 'بعبص براحتك ',
+                                            rows: [
+                                                {
+                                                    header: 'الــقـ👑ـســم الـاول',
+                                                    title: 'استدعاء_قسم_الاعضاء',
+                                                    description: '',
+                                                    id: '.ق1'
                                                }
                                             ]
                                         }
