@@ -28,7 +28,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
   const zack = 'https://qu.ax/GHdQp.jpg'
   const mentionId = m.key.participant || m.key.remoteJid;
   const sn = '*جـاًر تـجـهيز الـقـائـمـه🛰️...*'; // replace with the actual serial number
-    conn.fakeReply(m.chat, sn, '0@s.whatsapp.net', 'مرحبا بك👋🏻, في بوت السلطان', 'status@broadcast');
+    conn.fakeReply(m.chat, sn, '0@s.whatsapp.net', 'ميتسوري فى خدمتك 🌸', 'status@broadcast');
 
 conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { header: { title: `harley`}, body: { text: `*╮⊰ـ᯽⊱═══┤⊰🍁⊱├═══⊰᯽ـ⊱╭*
 *˼⚡˹↜ مـࢪحـبـا بـڪ︱ـي↶*
@@ -63,7 +63,7 @@ conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { 
                             {
                                 name: 'single_select',
                     buttonParamsJson: JSON.stringify({
-                        title: '💫 اخـتر القـسـم 💫',
+                        title: '⌈📜╎قـائـمه الاوامـر╎📜⌋',
                         sections: [
                             {
                                 title: 'قسم الاوامر',
@@ -138,23 +138,23 @@ conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { 
                 {
                     name: "cta_url",
                     buttonParamsJson: JSON.stringify({
-                        display_text: "قنـاة الـواتـساب📣",
-                        url: "https://whatsapp.com/channel/0029VaL2bnW0rGiPZq8B5S2M",
-                        merchant_url: "https://whatsapp.com/channel/0029VaL2bnW0rGiPZq8B5S2M"
+                        display_text: "⌈⚜️╎قـناة الـبوت╎⚜️⌋",
+                        url: "https://whatsapp.com/channel/0029VaaPtwOLikgHE4rA8b28",
+                        merchant_url: "https://whatsapp.com/channel/0029VaaPtwOLikgHE4rA8b28"
                     })
                 },
                 {
                     name: "cta_url",
                     buttonParamsJson: JSON.stringify({
-                        display_text: "مشاهده البوت🎦",
-                        url: "https://youtu.be/-XdmFcY3zQI?si=bzJfbQGwjUk-4rZO",
-                        merchant_url: "https://youtu.be/-XdmFcY3zQI?si=bzJfbQGwjUk-4rZO"
+                        display_text: "⌈🔗╎مـوقع الـبوت╎🔗⌋",
+                        url: "https://675351499ecba.site123.me/",
+                        merchant_url: "https://675351499ecba.site123.me/"
                     })
                 },
                 {
                     name: 'single_select',
                     buttonParamsJson: JSON.stringify({
-                        title: '🔎معلومات البوت🔎',
+                        title: '⌈📥╎مـعـلومات الـبوت╎📥⌋',
                         sections: [
                             {
                                 title: '📜معلومات عن البوت📜',
