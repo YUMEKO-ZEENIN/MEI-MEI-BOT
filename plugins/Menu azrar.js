@@ -66,8 +66,8 @@ conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { 
                         title: '⌈📜╎قـائـمه الاوامـر╎📜⌋',
                         sections: [
                             {
-                                title: 'قسم الاوامر',
-                                highlight_label: 'بوت السلطان',
+                                title: 'مرحـبا بـك هـنا الاوامر خاص لى ميتسوري🌸',
+                                highlight_label: 'ميتسوري🌸',
                                 rows: [
                                     {
                                         header: 'يعطيك قسم اوامر الجروب🗣️',
@@ -158,11 +158,11 @@ conn.relayMessage(m.chat, { viewOnceMessage: { message: { interactiveMessage: { 
                         sections: [
                             {
                                 title: '📜معلومات عن البوت📜',
-                                highlight_label: 'By Youssef Al Soltan',
+                                highlight_label: 'cheon',
                                 rows: [
                                     {
-                                        header: 'صانع البوت👤',
-                                        title: 'الـمطور👾',
+                                        header: 'الـمطور الـبوت🎭',
+                                        title: 'cheon yooha',
                                         description: '',
                                         id: '.المطور'
                                     },
