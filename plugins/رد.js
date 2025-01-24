@@ -13,8 +13,8 @@ handler.all = async function (m, conn) {
   const vn = './media/الكلب.mp3'; //src sounds
   const vn2 = './media/سقيتك كاس.mp3'; 
   
-  let num = "201225655220"; //number owner
-  let num2 = "201016948771"; //number bot
+  let num = "212705117543"; //number owner
+  let num2 = "6285822077637"; //number bot
   let sender = m.sender.split('@')[0];
   let ownerJid = num + '@s.whatsapp.net'; // JID of the owner
   let ownerName = "اسم المطور"; // اسم المطور
